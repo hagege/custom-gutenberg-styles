@@ -6,6 +6,13 @@ Description: Zusätzliche Block-Styles für den Block Editor
 Author: Hans-Gerd Gerhards
 Author URI: https://haurand.com (Quelle: Automattic)
 Version: 1.2
+
+Anregung auf https://die-netzialisten.de/gutenberg-block-pattern-erstellen/
+
+Weitere gute Beiträge:
+• https://melchoyce.design/2020/03/30/creating-a-simple-block-pattern-plugin-for-the-gutenberg-editor/ 
+• https://speckyboy.com/create-simple-gutenberg-block-pattern-wordpress/ 
+• https://blog.kulturbanause.de/2020/08/eigene-patterns-fuer-den-wordpress-block-editor-gutenberg-erstellen/ 
 */
 
 
