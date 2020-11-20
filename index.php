@@ -5,20 +5,12 @@ Plugin URI: https://github.com/Automattic/gutenberg-block-styles/
 Description: Zusätzliche Block-Styles für den Block Editor
 Author: Hans-Gerd Gerhards
 Author URI: https://haurand.com (Quelle: Automattic)
-Version: 1.2
-
-Anregung auf https://die-netzialisten.de/gutenberg-block-pattern-erstellen/
-
-Weitere gute Beiträge:
-• https://melchoyce.design/2020/03/30/creating-a-simple-block-pattern-plugin-for-the-gutenberg-editor/ 
-• https://speckyboy.com/create-simple-gutenberg-block-pattern-wordpress/ 
-• https://blog.kulturbanause.de/2020/08/eigene-patterns-fuer-den-wordpress-block-editor-gutenberg-erstellen/ 
-*/
+Version: 1.3
 
 
 
 /**
- * Register Custom Block Styles
+ * 1. Register Custom Block Styles
  */
 if ( function_exists( 'register_block_style' ) ) {
 	function block_styles_register_block_styles() {
@@ -86,11 +78,65 @@ if ( function_exists( 'register_block_style' ) ) {
 }
 
 
+/**
+ * 2. Custom Block Patterns
+ */
+
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+/* 1. Block */
+/* Block pattern: Vorlage mit 3 Kacheln, bestehend aus jeweils einer Überschrift, einem Bild mit kurzer Beschreibung*/
+/* ---------------------------------------------------------------------------------------------------------------------------- */
 register_block_pattern(
-'cgs-card-pattern',
+   'kacheln-card-pattern',
+     array(
+     'title' => __( 'Drei Spalten mit Bildern (Kacheln)', 'kacheln-block-pattern' ),
+     'description' => _x( 'Drei Spalten mit Bildern (Kacheln)', 'Drei Spalten mit Bildern (Kacheln)', 'kacheln-block-pattern' ),
+     'categories'  => array('columns'),
+     'content'     => 
+        " <!-- wp:columns -->
+          <div class=\"wp-block-columns\"><!-- wp:column {\"className\":\"kacheln\"} -->
+          <div class=\"wp-block-column kacheln\"><!-- wp:heading {\"align\":\"center\",\"level\":4} -->
+          <h4 class=\"has-text-align-center\">Geschichte</h4>
+          <!-- /wp:heading -->
+          
+          <!-- wp:image {\"id\":47830,\"sizeSlug\":\"large\"} -->
+          <figure class=\"wp-block-image size-large\"><img src=\"https://haurand.com/wp-content/uploads/2020/11/sonnenuntergang_2.jpeg\" alt=\"\" class=\"wp-image-47830\"/><figcaption>Ein Foto vom Flötenspieler</figcaption></figure>
+          <!-- /wp:image --></div>
+          <!-- /wp:column -->
+          
+          <!-- wp:column {\"className\":\"kacheln\"} -->
+          <div class=\"wp-block-column kacheln\"><!-- wp:heading {\"align\":\"center\",\"level\":4} -->
+          <h4 class=\"has-text-align-center\">Landschaft</h4>
+          <!-- /wp:heading -->
+          
+          <!-- wp:image {\"id\":47824,\"sizeSlug\":\"large\"} -->
+          <figure class=\"wp-block-image size-large\"><img src=\"https://haurand.com/wp-content/uploads/2020/11/sauerland_3.jpg\" alt=\"\" class=\"wp-image-47824\"/><figcaption>Landschaft mit Sonnenuntergang</figcaption></figure>
+          <!-- /wp:image --></div>
+          <!-- /wp:column -->
+          
+          <!-- wp:column {\"className\":\"kacheln\"} -->
+          <div class=\"wp-block-column kacheln\"><!-- wp:heading {\"align\":\"center\",\"level\":4} -->
+          <h4 class=\"has-text-align-center\">Bevölkerung</h4>
+          <!-- /wp:heading -->
+          
+          <!-- wp:image {\"id\":47827,\"sizeSlug\":\"large\"} -->
+          <figure class=\"wp-block-image size-large\"><img src=\"https://haurand.com/wp-content/uploads/2020/11/sonnenuntergang_1.jpeg\" alt=\"\" class=\"wp-image-47827\"/><figcaption>Die Bevölkerung von Eilendorf (Foto: pixabay.com)</figcaption></figure>
+          <!-- /wp:image --></div>
+          <!-- /wp:column --></div>
+          <!-- /wp:columns -->",
+   )
+ );
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+/* 2. Block */
+/* 3 Spalten mit runden Bildern */
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+register_block_pattern(
+'haurand-three-card-pattern',
 array(
-  'title' => __( '3 Columns with Cards', 'cgs-block-pattern' ),
-  'description' => _x( 'Three Columns with Cards', 'Three Columns with Cards', 'cgs-block-pattern' ),
+  'title' => __( '3 Columns with Cards', 'haurand-three-block-pattern' ),
+  'description' => _x( 'Three Columns with Cards', 'Three Columns with Cards', 'haurand-three-block-pattern' ),
   'categories' => array('columns'),
   'content' => "<!-- wp:columns -->
         <div class=\"wp-block-columns\"><!-- wp:column {\"className\":\"kachel_spalte\"} -->
@@ -156,48 +202,38 @@ array(
   ) 
 );
 
-
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+/* 3. Block */
+/* 2 Spalten mit Bild oben Text darunter, blauer Hintergrund ohne Rahmen */ 
+/* ---------------------------------------------------------------------------------------------------------------------------- */
 register_block_pattern(
-   'ks-card-pattern',
+   'haurand-two-card-pattern',
      array(
-     'title' => __( '2 Columns with Cards', 'ks-block-pattern' ),
-     'description' => _x( 'Two Columns with Cards', 'Two Columns with Cards', 'ks-block-pattern' ),
+     'title' => __( '2 Columns with Cards', 'haurand-two-block-pattern' ),
+     'description' => _x( 'Two Columns with Cards', 'Two Columns with Cards', 'haurand-two-block-pattern' ),
      'categories'  => array('columns'),
      'content'     => "<!-- wp:columns -->
-         <div class=\"wp-block-columns\"><!-- wp:column {\"className\":\"cards-container\"} -->
-         <div class=\"wp-block-column cards-container\"><!-- wp:group {\"className\":\"card-item\"} -->
-         <div class=\"wp-block-group card-item\"><div class=\"wp-block-group__inner-container\"><!-- wp:image {\"id\":37554,\"sizeSlug\":\"large\"} -->
-         <figure class=\"wp-block-image size-large\"><img src=\"https://die-netzialisten.de/wp-content/uploads/2020/06/rechteck.png\" alt=\"\" class=\"wp-image-37554\"/></figure>
-         <!-- /wp:image -->
+        <div class=\"wp-block-columns\"><!-- wp:column {\"className\":\"blue-background\"} -->
+        <div class=\"wp-block-column blue-background\"><!-- wp:image {\"id\":324,\"sizeSlug\":\"large\"} -->
+        <figure class=\"wp-block-image size-large\"><img src=\"https://haurand.com/wp-content/uploads/2020/11/sonnenuntergang_2.jpeg\" alt=\"\" class=\"wp-image-324\"/></figure>
+        <!-- /wp:image -->
         
-         <!-- wp:heading {\"level\":3} -->
-         <h3>Hugo</h3>
-         <!-- /wp:heading -->
+        <!-- wp:paragraph {\"className\":\"blue-background\"} -->
+        <p class=\"blue-background\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        <!-- /wp:paragraph --></div>
+        <!-- /wp:column -->
         
-         <!-- wp:list -->
-         <ul><li>Ein bauchiges Weinglas zu 1/3 mit Eiswürfeln füllen</li><li>Ein paar Blätter frische Minze</li><li>2cl&nbsp;Holunderblütensirup</li><li>2 Viertel einer Bio-Limette (etwas Saft ausdrücken)</li><li>15 ml Prosecco oder Sekt </li><li>Ein Schuss Mineralwasser</li></ul>
-         <!-- /wp:list -->
-         </div></div>
-         <!-- /wp:group --></div>
-         <!-- /wp:column -->
+        <!-- wp:column {\"className\":\"blue-background\"} -->
+        <div class=\"wp-block-column blue-background\"><!-- wp:image {\"id\":325,\"sizeSlug\":\"large\"} -->
+        <figure class=\"wp-block-image size-large\"><img src=\"https://haurand.com/wp-content/uploads/2020/11/sauerland_3.jpg\" alt=\"\" class=\"wp-image-325\"/></figure>
+        <!-- /wp:image -->
         
-         <!-- wp:column {\"className\":\"cards-container\"} -->
-         <div class=\"wp-block-column cards-container\"><!-- wp:group {\"className\":\"card-item\"} -->
-         <div class=\"wp-block-group card-item\"><div class=\"wp-block-group__inner-container\"><!-- wp:image {\"id\":37554,\"sizeSlug\":\"large\"} -->
-         <figure class=\"wp-block-image size-large\"><img src=\"https://die-netzialisten.de/wp-content/uploads/2020/06/rechteck.png\" alt=\"\" class=\"wp-image-37554\"/></figure>
-         <!-- /wp:image -->
-        
-         <!-- wp:heading {\"level\":3} -->
-         <h3>Apérol Sprizz</h3>
-         <!-- /wp:heading -->
-        
-         <!-- wp:list -->
-         <ul><li>Ein bauchiges Weinglas zu 1/3 mit Eiswürfeln füllen</li><li>2 Scheiben einer 1 Bio-Orange</li><li>1 Teil Aperol</li><li>2 Teile Sekt</li><li>Mit Mineralwasser auffüllen</li></ul>
-         <!-- /wp:list -->
-        
-         </div></div>
-         <!-- /wp:group --></div>
-         <!-- /wp:column --></div>
-         <!-- /wp:columns -->",
+        <!-- wp:paragraph {\"className\":\"blue-background\"} -->
+        <p class=\"blue-background\">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+        <!-- /wp:paragraph --></div>
+        <!-- /wp:column --></div>
+        <!-- /wp:columns -->
+        ",
    )
  );
+

@@ -4,6 +4,12 @@
  * style.css für Custom Gutenberg Block Styles
  */
 
+
+
+ /**
+ * 1. Register Custom Block Styles
+ */
+ 
 /* Blauer Absatz */
 .is-style-blue-paragraph {
 	background-color: #0087be;
@@ -55,6 +61,68 @@
 }
 
 
+/**
+ * 2. Custom Block Patterns
+ */
+
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+/* 1. Block */
+/* Block pattern: Vorlage mit 3 Kacheln, bestehend aus jeweils einer Überschrift, einem Bild mit kurzer Beschreibung*/
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+/* Randdarstellung für Kacheln 
+.kachel_spalte, 
+div.wp-block-column */
+div.kacheln {
+    flex-basis: calc(50% - 16px);
+    flex-grow: 0;
+	/* box-shadow: 7px 5px 30px rgba(72,73,121,.15) */
+	box-shadow: 5px 5px 10px #888888;
+    padding: 15px;
+
+	/* kommt beim Vortrag dazu: */ 
+	opacity: 0.7;*/
+}
+
+/* Beim Überfahren mehr Schatten 
+.kachel_spalte:hover,
+div.wp-block-column:hover */
+div.kacheln:hover{
+    box-shadow: 10px 10px 15px #888888;
+	/* box-shadow: 7px 5px 30px rgba(72,73,121,.15) */
+	
+	/* kommt beim Vortrag dazu: */ 
+  	-webkit-transform: scale(1.1);
+		-moz-transform: scale(1.05);
+		-ms-transform: scale(1.05);
+		-o-transform: scale(1.05);
+		transform: scale(1.05);
+	  opacity: 1.0;
+		/* VERZÖGERUNG  */
+	 -webkit-transition: all 0.7s linear;
+	 -moz-transition: all 0.7s linear;
+	 -ms-transition: all 0.7s linear;
+	 -o-transition: all 0.7s linear;
+	 transition: all 0.7s linear;
+     /* Die Transition beginnt langsam, wird schnell und endet wieder langsam.*/
+     transition-timing-function: ease-in-out;
+	 /* Schatten bei allen Elementen 
+	 -webkit-filter: drop-shadow(5px 5px 3px rgba(0,0,0,0.7));
+   filter: drop-shadow(5px 5px 3px rgba(0,0,0,0.7));*/
+}
+
+/* Beschriftung der Kachel */
+figcaption {
+    padding: 10px;
+}
+
+
+
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+/* 2. Block */
+/* 3 Spalten mit runden Bildern */
+/* Block pattern: Vorlage mit 3 Kacheln, bestehend aus jeweils einer Überschrift, einem Bild mit kurzer Beschreibung*/
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+
 /* für Block Pattern 3 Spalten */ 
 /* Randdarstellung für Kacheln */
 .kachel_spalte {
@@ -96,4 +164,60 @@
 	-webkit-filter: drop-shadow(5px 5px 3px rgba(0,0,0,0.7));
     filter: drop-shadow(5px 5px 3px rgba(0,0,0,0.7));
 }
+
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+/* 3. Block */
+/* 2 Spalten mit Bild oben Text darunter, blauer Hintergrund ohne Rahmen */ 
+/* ---------------------------------------------------------------------------------------------------------------------------- */
+
+/* Spaltenblock */
+p.blue-background,
+div.blue-background {
+    background-color: #22405a;
+    color: white;
+	/* box-shadow: 5px 5px 10px #888888; */
+}
+
+/* Beim Überfahren mehr Schatten 
+ */
+div.blue-background:hover{
+    box-shadow: 10px 10px 15px #888888;
+		/* kommt beim Vortrag dazu: */
+  	-webkit-transform: scale(1.1);
+		-moz-transform: scale(1.01);
+		-ms-transform: scale(1.01);
+		-o-transform: scale(1.01);
+		transform: scale(1.01);
+	  opacity: 1.0;
+		/* VERZÖGERUNG */
+	 -webkit-transition: all 0.7s linear;
+	 -moz-transition: all 0.7s linear;
+	 -ms-transition: all 0.7s linear;
+	 -o-transition: all 0.7s linear;
+	 transition: all 0.7s linear;
+	 /* Schatten bei allen Elementen 
+	 -webkit-filter: drop-shadow(5px 5px 3px rgba(0,0,0,0.7));
+   filter: drop-shadow(5px 5px 3px rgba(0,0,0,0.7));*/
+}
+
+
+/* Absatz für Spaltentext */
+p.blue-background {
+   padding: 20px 38px;
+}
+
+/* kein Rand bei Bildern animieren */
+figure.wp-block-image.size-large {
+    margin-top: 0px!important;
+}
+
+
+
+
+
+
+
+
+
+
 
