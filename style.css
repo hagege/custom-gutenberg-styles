@@ -200,6 +200,44 @@ div.blue-background:hover{
    filter: drop-shadow(5px 5px 3px rgba(0,0,0,0.7));*/
 }
 
+/* damit die Spalten nicht direkt zusammenhängen */
+@media (max-width: 599px){
+	.wp-block-column {
+			/* statt 0px */
+			margin-top: 20px;    
+	}
+}
+
+/* Foto bei den dunkelblauen Spalten animieren (Hover) */
+figure.zoomeffekt {
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	overflow: hidden;
+}
+
+figure.zoomeffekt:hover+span {
+	bottom: -36px;
+	opacity: 0.1;
+}
+
+/* hier muss ggfs. die Klasse wp-image-324 jeweils für das Bild angepasst werden */
+/* durch falsche Kennung (324-1) zunächst allgemein ausgeschaltet */
+img.wp-image-324,
+img.wp-image-325 {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+img.wp-image-324:hover,
+img.wp-image-325:hover {
+	-webkit-transform: scale(1.5);
+	transform: scale(1.5);
+	transition: all 1.5s linear;
+}
+
 
 /* Absatz für Spaltentext */
 p.blue-background {
